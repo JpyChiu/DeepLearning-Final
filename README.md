@@ -19,11 +19,11 @@
 把現在github上的檔案與自己電腦裡的專案做更新
 * `git add .`
 把目前有更改的所有檔案加入暫存區
-* `git commit -m "commit meesage'`
+* `git commit -m "commit meesage"`
 把暫存區的檔案commit
 * `git push`
 把commit push到github上(第一次push需要設定push位置 ex: `git push -u origin master`)
 * `git status`
-查看目前改動了哪些檔案(紅字為尚未存入暫存區 綠字為已加入暫存區)
+查看目前自己改動了哪些檔案(紅字為尚未存入暫存區 綠字為已加入暫存區)
 * `git log`
 查看commit log訊息
