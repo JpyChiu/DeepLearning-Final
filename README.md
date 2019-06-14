@@ -8,6 +8,6 @@
 * [ ] data_loader.py
 * [ ] training.py
 * [ ] test.py
-* [ ] ppt - 演示(Presetation)
-* [ ] pdf - 軟體需求 (SRS)
+* [ ] ppt or pdf - 講述code的實作 (Presetation)
+* [ ] pdf - 企劃書 內容可能包括動機 市場 UI操作流程等 (SRS)
 * [ ] UI
