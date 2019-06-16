@@ -1,7 +1,12 @@
+# Latex tmp files
 *.log
 *.aux
 *.gz
 *.out
 *.toc
+
+# Model
 *.h5
+
+# Image data
 img/
