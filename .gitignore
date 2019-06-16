@@ -3,4 +3,5 @@
 *.gz
 *.out
 *.toc
+*.h5
 /img

@@ -31,5 +31,5 @@
 ## **Latex 安裝**
 * 下載 `Miktex` 安裝包 `https://miktex.org/download`
 * 可以使用安裝包內的 `TeXworks` 編輯器編譯 `.tex` 檔
-* 編譯後會出現除了 `.pdf` ，還會有多個小檔案，如:  `.aux`， `log`， `.syntex.gz` 等檔案
+* 編譯後會出現除了 `.pdf` ，還會有多個小檔案，如:  `.aux`， `.log`， `.syntex.gz` 等檔案
   * 已經在 `.gitignore` 裡面已排除這些檔案, 不會上傳到github上
