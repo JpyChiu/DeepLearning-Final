@@ -27,3 +27,9 @@
 查看目前自己改動了哪些檔案(紅字為尚未存入暫存區 綠字為已加入暫存區)
 * `git log`
 查看commit log訊息
+
+## **Latex 安裝**
+* 下載 `Miktex` 安裝包 `https://miktex.org/download`
+* 可以使用安裝包內的 `TeXworks` 編輯器編譯 `.tex` 檔
+* 編譯後會出現 `.pdf`， `.aux`， `log`， `.syntex.gz` 等檔案
+  * 已經在 `.gitignore` 裡面排除 `.aux`， `log`， `.syntex.gz` 檔案, 不會上傳到github上
