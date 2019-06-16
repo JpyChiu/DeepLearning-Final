@@ -1,3 +1,6 @@
 *.log
 *.aux
 *.gz
+*.out
+*.toc
+/img
