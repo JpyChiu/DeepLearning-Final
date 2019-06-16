@@ -1,8 +1,8 @@
 import numpy as np
-import scipy.misc
+import scipy.misc # numpy下的圖像處理package
 import csv
 import cv2
-from glob import glob
+# from glob import glob
 
 class DataLoader():
     def __init__(self, train_dataset, val_dataset, img_res=96):

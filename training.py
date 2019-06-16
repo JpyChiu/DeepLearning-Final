@@ -12,7 +12,7 @@ from dataloader import DataLoader
 from sklearn.metrics import accuracy_score
 import csv
 import cv2
-import pandas as pd
+# import pandas as pd
 
 class Where_is_Wally():
     def __init__(self):
@@ -25,7 +25,7 @@ class Where_is_Wally():
         # Configure data loader
         self.train_dataset_name = './where_wally/rg_train.csv'
         self.val_dataset_name = './where_wally/rg_val.csv'
-        self.data_loader =DataLoader(train_dataset=self.train_dataset_name,val_dataset=self.val_dataset_name,img_res=(self.img_rows, self.img_cols))
+        self.data_loader = DataLoader(train_dataset=self.train_dataset_name, val_dataset=self.val_dataset_name, img_res=(self.img_rows, self.img_cols))
         
         # Build the network
         optimizer = Adam(lr=0.002, beta_1=0.9, beta_2=0.999)
