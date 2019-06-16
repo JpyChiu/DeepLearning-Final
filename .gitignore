@@ -4,4 +4,4 @@
 *.out
 *.toc
 *.h5
-/img
+img/
