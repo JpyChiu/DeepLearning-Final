@@ -12,7 +12,7 @@ from dataloader import DataLoader
 from sklearn.metrics import accuracy_score
 import csv
 import cv2
-# import pandas as pd
+#import pandas as pd
 
 class Where_is_Wally():
     def __init__(self):
@@ -23,9 +23,9 @@ class Where_is_Wally():
         self.img_shape = (self.img_rows, self.img_cols, self.channels)
 
         # Configure data loader
-        self.train_dataset_name = './where_wally/rg_train.csv'
-        self.val_dataset_name = './where_wally/rg_val.csv'
-        self.data_loader = DataLoader(train_dataset=self.train_dataset_name, val_dataset=self.val_dataset_name, img_res=(self.img_rows, self.img_cols))
+        self.train_dataset_name = './bbox_train.csv' #已改 使用0~100張的train.jpg
+        self.val_dataset_name = './bbox_val.csv' #已改 使用101~200張的train.jpg
+        self.data_loader =DataLoader(train_dataset=self.train_dataset_name,val_dataset=self.val_dataset_name,img_res=(self.img_rows, self.img_cols))
         
         # Build the network
         optimizer = Adam(lr=0.002, beta_1=0.9, beta_2=0.999)
@@ -65,16 +65,16 @@ class Where_is_Wally():
                     d = Dropout(0.5)(d)
             return d
 
-        # LeNet-5 layers
+        # LeNet-5 layers #224*224    6*6
         d0 = Input(shape=self.img_shape)  # Image input
-        d1 = conv2d(d0, filters=6, f_size=5, stride=1, bn=True)
-        d2 = maxpooling2d(d1, f_size=2, stride=2)
+        d1 = conv2d(d0, filters=6, f_size=5, stride=1, bn=True) #卷積
+        d2 = maxpooling2d(d1, f_size=2, stride=2)   #可能是2x2範圍內取最大值 
         d3 = conv2d(d2, filters=16, f_size=5, stride=1, bn=True)
         d4 = maxpooling2d(d3, f_size=2, stride=2)
         d5 = flatten(d4)
         d6 = dense(d5, f_size=120, dr=True, lastLayer=False)
         d7 = dense(d6, f_size=84, dr=True, lastLayer=False)
-        d8 = dense(d7, f_size=2, dr=False, lastLayer=True)
+        d8 = dense(d7, f_size=10, dr=False, lastLayer=True) #由於有10種class 所以改成10
         return Model(d0, d8)
 
     def train(self, epochs, batch_size=1, sample_interval=50):

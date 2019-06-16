@@ -1,8 +1,8 @@
 import numpy as np
-import scipy.misc # numpy下的圖像處理package
+import scipy.misc
 import csv
 import cv2
-# from glob import glob
+from glob import glob
 
 class DataLoader():
     def __init__(self, train_dataset, val_dataset, img_res=96):
@@ -21,12 +21,11 @@ class DataLoader():
             # 讀取 CSV 檔案內容
             rows = csv.reader(csvfile)
             for a, b in zip(rows, range(0, 100)):  ##假設是list 第一列的資料就是 檔名 labels
-                if b == 100:
-                    break
                 #採用cv2 讀取像素 附加到list尾端 形成一維list    
                 self.train_data.append(cv2.imread(a[0]))#100張圖片的像素 依序存進list                             
                 self.train_labels.append(int(a[1]))
-              
+                if b == 99:
+                    break
              
         #將測試集的一維list存成np.array       
         self.train_data = np.array(self.train_data)
@@ -38,11 +37,11 @@ class DataLoader():
             # 讀取 CSV 檔案內容
             rows = csv.reader(csvfile)
             for a, b in zip(rows, range(0, 100)):
-                if b == 100:
-                    break
                 #採用cv2 讀取像素 附加到list尾端 形成一維list    
                 self.test_data.append(cv2.imread(a[0]))             
-                self.test_labels.append(int(a[1]))                
+                self.test_labels.append(int(a[1]))
+                if b == 99:
+                    break
                
         #將測試集的list存成np.array         
         self.test_data = np.array(self.test_data)
@@ -54,8 +53,9 @@ class DataLoader():
         #n_batches = 100 / 4 = 25
         self.n_batches = int(len(self.train_data) / batch_size)
         
-        for i in range(self.n_batches - 1):#0 ~ 24        
-            batch = self.train_data[i * batch_size:(i + 1) * batch_size]#[0 * 4 : 1 * 4]  第0個第4個colcol取到
+        for i in range(self.n_batches - 1):#0 ~ 24
+            # [0 * 4 : 1 * 4]  第0個第4個colcol取到
+            batch = self.train_data[i * batch_size:(i + 1) * batch_size]
             labels = self.train_labels[i * batch_size:(i + 1) * batch_size]
 
             batch_label = []
