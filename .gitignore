@@ -13,3 +13,6 @@ img/
 
 # python cache
 /__pycache__
+
+#other
+.idea/
