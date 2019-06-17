@@ -5,6 +5,13 @@ import tkinter.font as tkFont
 from tkinter import filedialog
 import os
 
+class CNN:
+    def __init__(self, age):
+        self.age1 = age
+
+    def temp(self):
+        return self.age1
+
 class Interface:
     def __init__(self, root):
         self.root = root
@@ -23,7 +30,7 @@ class Interface:
         self.tl = tk.Toplevel()
         #self.tl.geometry("+300+80")
         self.tl.withdraw()
-        self.file_path = filedialog.askopenfilename(initialdir = "C:/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
+        self.file_path = filedialog.askopenfilename(initialdir = "C:/Users/user/PycharmProjects/test/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
         self.rel_path = os.path.relpath(self.file_path)
         self.tl.update()
         self.tl.deiconify()
@@ -32,14 +39,25 @@ class Interface:
         self.img=ImageTk.PhotoImage(self.im)
         self.imLabel=tk.Label(self.tl,image=self.img).grid(row=0, column=1)
         self.hideRoot()
-        self.emptyLabel1 = tk.Label(self.tl, height=10).grid(row=1,column=1)
+        self.start_testing()
+        self.ftAge = tkFont.Font(family='Helvetica', size=15, weight=tkFont.BOLD)
+        self.ageLabel = tk.Label(self.tl, height=5, text=("預測年齡:"+self.age+"歲"), font=self.ftAge).grid(row=1,column=1)
         self.closeBtn = tk.Button(self.tl, text="結束程式", font=self.ftBtn, command=self.close_window).grid(row=2, column=0)
-        self.nextBtn = tk.Button(self.tl, text="看下一張", font=self.ftBtn, command=self.close_window).grid(row=2, column=2)
+        self.nextBtn = tk.Button(self.tl, text="看下一張", font=self.ftBtn, command=self.restart_window).grid(row=2, column=2)
         self.tl.mainloop()
 
     def close_window(self):
         self.tl.destroy()
         self.root.destroy()
+
+    def restart_window(self):
+        self.close_window()
+        newRoot = tk.Tk()
+        self.__init__(newRoot)
+
+    def start_testing(self):
+        self.tmp = CNN(self.rel_path)
+        self.age = self.tmp.temp()
 
 if __name__ == '__main__':
     root = tk.Tk()
