@@ -21,6 +21,7 @@
 \usepackage[bookmarks=true]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage{CJKutf8}
 \hypersetup{
     bookmarks=false,    % show bookmarks bar?
     pdftitle={Software Requirement Specification},    % title
@@ -41,6 +42,7 @@
 %}
 \usepackage{hyperref}
 \begin{document}
+\begin{CJK}{UTF8}{bkai}
 
 \begin{flushright}
     \rule{16cm}{5pt}\vskip1cm
@@ -64,10 +66,7 @@
 \chapter{Introduction}
 
 \section{Purpose}
-$<$Identify the product whose software requirements are specified in this 
-document, including the revision or release number. Describe the scope of the 
-product that is covered by this SRS, particularly if this SRS describes only 
-part of the system or a single subsystem.$>$
+    專案目標:
 
 \section{Intended Audience and Reading Suggestions}
 $<$Describe the different types of reader that the document is intended for, 
@@ -229,5 +228,5 @@ any user identity authentication requirements. Refer to any external policies or
 regulations containing security issues that affect the product. Define any 
 security or privacy certifications that must be satisfied.$>$
 
-
+\end{CJK}
 \end{document}
