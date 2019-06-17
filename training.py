@@ -13,7 +13,7 @@ import csv
 import cv2
 #import pandas as pd
 
-class Where_is_Wally():
+class ConvolutionalNeuralNetworks():
     def __init__(self):
         # Input shape
         self.img_rows = 224
@@ -27,7 +27,7 @@ class Where_is_Wally():
         self.data_loader =DataLoader(train_dataset=self.train_dataset_name,val_dataset=self.val_dataset_name,img_res=(self.img_rows, self.img_cols))
         
         # Build the network
-        optimizer = Adam(lr=0.002, beta_1=0.9, beta_2=0.999)
+        optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999)#上一版lr=0.002
         self.CNN_Network = self.build_CNN_Network()
         self.CNN_Network.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
@@ -96,11 +96,11 @@ class Where_is_Wally():
                 print(batch_i)
 
                 # If at save interval => do validation and save model
-                if (batch_i + 1) % sample_interval == 124:
+                if (batch_i + 1) % sample_interval == 24:
                     self.validation(epoch)
 
     def validation(self, epoch):
-        Xte, Xte_labels = self.data_loader.load_data(batch_size=1024)
+        Xte, Xte_labels = self.data_loader.load_data(batch_size=20)
 
         pred_labels = self.CNN_Network.predict(Xte)
         print("Validation acc: " + str(
@@ -109,5 +109,5 @@ class Where_is_Wally():
         
 if __name__ == '__main__':
     #     '''training model'''
-    my_CNN_Model = Where_is_Wally()
-    my_CNN_Model.train(epochs=20, batch_size=4, sample_interval=1266)
+    my_CNN_Model = ConvolutionalNeuralNetworks()
+    my_CNN_Model.train(epochs=20, batch_size=20, sample_interval=1266)

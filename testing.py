@@ -16,21 +16,21 @@ import cv2
 #from get_accuracy import get_accuracy
 
 
-class Where_is_Wally():
-    def __init__(self):
-        # Input shape
-        self.img_rows = 224
-        self.img_cols = 224
-        self.channels = 3
-        self.img_shape = (self.img_rows, self.img_cols, self.channels)
+# class ConvolutionalNeuralNetworks():
+#     def __init__(self):
+#         # Input shape
+#         self.img_rows = 224
+#         self.img_cols = 224
+#         self.channels = 3
+#         self.img_shape = (self.img_rows, self.img_cols, self.channels)
 
 
 if __name__ == '__main__':
     '''testing model'''
     imgs, labels = [], []
-    #my_CNN = Where_is_Wally()
+    #my_CNN = ConvolutionalNeuralNetworks()
     #my_CNN_Model = my_CNN.build_CNN_Network()
-    my_CNN_Model = load_model('./test07.h5')
+    my_CNN_Model = load_model('./model_35%2.h5')#('./test07.h5')
 
 
     #demo的檔案假設在input.in中
