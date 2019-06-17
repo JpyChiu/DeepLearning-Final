@@ -1,0 +1,22 @@
+未完成 沒測試過
+---------------
+洪博洲:
+
+縮排已修正
+
+training.py:
+
+	1.把save_weight改成save  意思是存整個模組 檔名沒變 
+	2.讀檔的檔名尚未更改 記得資料庫弄好之後要改檔名
+	3.training的註解看有沒有人要嘗試 很難
+testing.py:
+
+	1.寫了test mainfunction，剩下使用pred_labels判斷年齡層 留給宗倫
+	2.讀取的時候變成load_weight->load
+	3.demo的圖片預設是在input.in，且一次一張
+	4.加了一點註解
+dataloader.py:
+
+	1.改了num_class = 10
+	2.讀檔100張照片保留 要測試500張的時候記得調整
+	3.加了一點註解

@@ -1,5 +1,15 @@
+# Latex tmp files
 *.log
 *.aux
 *.gz
-/img
+*.out
+*.toc
+
+# Model
+*.h5
+
+# Image data
+img/
+
+# python cache
 /__pycache__

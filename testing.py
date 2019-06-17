@@ -67,6 +67,15 @@ if __name__ == '__main__':
 
     aged_range = np.argmax(predict_label, axis=1)
     print("We guess you are %d ~ %d years old" % ((aged_range* 10 + 1),(aged_range + 1) * 10) )
+<<<<<<< HEAD
+=======
+
+    ###接下來給demo平台使用這個結果去做事
+    ###交給林韶恩...
+    
+    
+    
+>>>>>>> 1f7a6cf2db11390187b5cb418888d3d92dd867e5
 
     ###接下來給demo平台使用這個結果去做事
     ###交給林韶恩...

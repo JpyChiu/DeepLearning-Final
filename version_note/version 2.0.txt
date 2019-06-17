@@ -1,0 +1,24 @@
+模組完成 測試完成有輸出
+目前圖片大概有三百多張，我們目前只使用100張當訓練集，100張當測試集
+---------------
+需要注意事項:
+	由於test_data需要四個維度 ex:(1024,224,224,3)
+	所以一開始先宣告成list
+	test_data = []
+	後面使用append
+	test_data.append(cv2.imread(dataset_name))
+	這樣這張圖片就會是 (1,224,224,3)  
+	ps:可以使用debug mode查看test_data之下的shape變數
+	
+	之後如果要處理多張輸入 可以使用第一個元素操控第幾張
+---------------
+洪博洲:
+
+training.py:
+	
+testing.py:
+	目前功能是輸入一張圖片 輸出預測的年齡範圍 
+	例如:"We guess you are 0 ~ 10 years old"
+	
+	輸入多張圖片分別判斷年齡，待完成...給謝宗倫....
+dataloader.py:
