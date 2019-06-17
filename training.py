@@ -22,8 +22,8 @@ class Where_is_Wally():
         self.img_shape = (self.img_rows, self.img_cols, self.channels)
 
         # Configure data loader
-        self.train_dataset_name = './bbox_train.csv' #已改 使用0~500張的train.jpg
-        self.val_dataset_name = './bbox_val.csv' #已改 使用501~1000張的train.jpg
+        self.train_dataset_name = './dataset/bbox_train.csv' #已改 使用0~500張的train.jpg
+        self.val_dataset_name = './dataset/bbox_val.csv' #已改 使用501~1000張的train.jpg
         self.data_loader =DataLoader(train_dataset=self.train_dataset_name,val_dataset=self.val_dataset_name,img_res=(self.img_rows, self.img_cols))
         
         # Build the network
