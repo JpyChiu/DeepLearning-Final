@@ -1,20 +1,3 @@
-%Copyright 2014 Jean-Philippe Eisenbarth
-%This program is free software: you can 
-%redistribute it and/or modify it under the terms of the GNU General Public 
-%License as published by the Free Software Foundation, either version 3 of the 
-%License, or (at your option) any later version.
-%This program is distributed in the hope that it will be useful,but WITHOUT ANY 
-%WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
-%PARTICULAR PURPOSE. See the GNU General Public License for more details.
-%You should have received a copy of the GNU General Public License along with 
-%this program.  If not, see <http://www.gnu.org/licenses/>.
-
-%Based on the code of Yiannis Lazarides
-%http://tex.stackexchange.com/questions/42602/software-requirements-specification-with-latex
-%http://tex.stackexchange.com/users/963/yiannis-lazarides
-%Also based on the template of Karl E. Wiegers
-%http://www.se.rit.edu/~emad/teaching/slides/srs_template_sep14.pdf
-%http://karlwiegers.com
 \documentclass{scrreprt}
 \usepackage{listings}
 \usepackage{underscore}
@@ -66,42 +49,32 @@
 \chapter{Introduction}
 
 \section{Purpose}
-    專案目標:
+    \begin{description}
+        \item 專案目標:
+        \begin{description}
+            \item 藉由UI介面選擇一張人物大頭照圖，經過系統判別該照片中人物年齡約是多少。
+        \end{description}
+        \item 系統介面:
+        \begin{itemize}
+            \item 能讓使用者操作選擇圖片的UI介面
+            \item 接收圖片並分析人物年齡的後端程式
+        \end{itemize}
+    \end{description}
 
 \section{Intended Audience and Reading Suggestions}
-$<$Describe the different types of reader that the document is intended for, 
-such as developers, project managers, marketing staff, users, testers, and 
-documentation writers. Describe what the rest of this SRS contains and how it is 
-organized. Suggest a sequence for reading the document, beginning with the 
-overview sections and proceeding through the sections that are most pertinent to 
-each reader type.$>$
+此系統為人臉年齡辨識，本規格書提供專案開發人員做為參考，包括專案概述、功能說明、UI操作及環境架設。
 
 \section{Project Scope}
-$<$Provide a short description of the software being specified and its purpose, 
-including relevant benefits, objectives, and goals. Relate the software to 
-corporate goals or business strategies. If a separate vision and scope document 
-is available, refer to it rather than duplicating its contents here.$>$
+此系統包含了能選擇圖片的UI介面以及後端處理分析人物年紀的程式，再傳回結果至UI顯示。
 
 
 \chapter{Overall Description}
 
 \section{Product Perspective}
-$<$Describe the context and origin of the product being specified in this SRS.  
-For example, state whether this product is a follow-on member of a product 
-family, a replacement for certain existing systems, or a new, self-contained 
-product. If the SRS defines a component of a larger system, relate the 
-requirements of the larger system to the functionality of this software and 
-identify interfaces between the two. A simple diagram that shows the major 
-components of the overall system, subsystem interconnections, and external 
-interfaces can be helpful.$>$
+本系統分為兩個部分，分別為UI前端，和人臉圖片辨識系統，如下圖所示。
 
 \section{Product Functions}
-$<$Summarize the major functions the product must perform or must let the user 
-perform. Details will be provided in Section 3, so only a high level summary 
-(such as a bullet list) is needed here. Organize the functions to make them 
-understandable to any reader of the SRS. A picture of the major groups of 
-related requirements and how they relate, such as a top level data flow diagram 
-or object class diagram, is often effective.$>$
+
 
 \section{User Classes and Characteristics}
 $<$Identify the various user classes that you anticipate will use this product.  
