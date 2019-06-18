@@ -1,4 +1,3 @@
-#洪博洲測試環境
 from __future__ import print_function, division
 from keras.layers import Input, Dense, Flatten, Dropout
 from keras.layers import BatchNormalization
@@ -14,7 +13,7 @@ import csv
 import cv2
 #import pandas as pd
 
-class Where_is_Wally():
+class ConvolutionalNeuralNetworks():
     def __init__(self):
         # Input shape
         self.img_rows = 224
@@ -23,12 +22,12 @@ class Where_is_Wally():
         self.img_shape = (self.img_rows, self.img_cols, self.channels)
 
         # Configure data loader
-        self.train_dataset_name = './dataset/bbox_train.csv' #已改 使用0~100張的train.jpg
-        self.val_dataset_name = './dataset/bbox_val.csv' #已改 使用101~200張的train.jpg
+        self.train_dataset_name = './dataset/bbox_train.csv' #已改 使用0~500張的train.jpg
+        self.val_dataset_name = './dataset/bbox_val.csv' #已改 使用501~1000張的train.jpg
         self.data_loader =DataLoader(train_dataset=self.train_dataset_name,val_dataset=self.val_dataset_name,img_res=(self.img_rows, self.img_cols))
         
         # Build the network
-        optimizer = Adam(lr=0.002, beta_1=0.9, beta_2=0.999)
+        optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999)#上一版lr=0.002
         self.CNN_Network = self.build_CNN_Network()
         self.CNN_Network.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
 
@@ -101,7 +100,7 @@ class Where_is_Wally():
                     self.validation(epoch)
 
     def validation(self, epoch):
-        Xte, Xte_labels = self.data_loader.load_data(batch_size=1024)
+        Xte, Xte_labels = self.data_loader.load_data(batch_size=20)
 
         pred_labels = self.CNN_Network.predict(Xte)
         print("Validation acc: " + str(
@@ -110,5 +109,5 @@ class Where_is_Wally():
         
 if __name__ == '__main__':
     #     '''training model'''
-    my_CNN_Model = Where_is_Wally()
-    my_CNN_Model.train(epochs=1, batch_size=4, sample_interval=1266)
+    my_CNN_Model = ConvolutionalNeuralNetworks()
+    my_CNN_Model.train(epochs=20, batch_size=20, sample_interval=1266)

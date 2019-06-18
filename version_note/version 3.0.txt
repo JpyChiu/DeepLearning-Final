@@ -1,0 +1,17 @@
+模型已Train完 20個epoch下有37%準確度
+---------------
+謝宗倫:
+
+training.py:
+
+	1.讀train.csv及val.csv 各100張圖上調至各500張
+	2.epoch從1上調至20
+
+testing.py:
+
+	1.只刪空白行 改縮排
+
+dataloader.py:
+
+	1.調整測試500張的
+	
