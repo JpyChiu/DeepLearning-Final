@@ -31,11 +31,7 @@ class Predict_Age:
         test_data = np.array(test_data) / 127.5 - 1.
         predict_label = my_CNN_Model.predict(test_data)
         aged_range = np.argmax(predict_label, axis=1)
-<<<<<<< HEAD
-        if aged_range == float(10):
-=======
         if aged_range==10:
->>>>>>> 77147aebabdbd77ed1adf9893d6a9fd87e966699
             self.predict_age = "11" #第11類 無人臉
         else:
             self.predict_age = str(aged_range* 10 + 1)+"~"+str((aged_range + 1) * 10)#1~10歲類推
@@ -68,16 +64,6 @@ class Interface:
         self.hideRoot()
         self.start_testing()
         ftAge = tkFont.Font(family='Helvetica', size=15, weight=tkFont.BOLD)
-<<<<<<< HEAD
-        if(self.age == "11"):
-            output = "您選擇的圖片中辨識不到人臉"
-        else:
-            output = "預測年齡:"+self.age+"歲"
-        ageLabel = tk.Label(self.tl, height=5, text=(output), font=ftAge).grid(row=1,column=1)
-        closeBtn = tk.Button(self.tl, text="結束程式", font=self.ftBtn, command=self.close_window).grid(row=2, column=0)
-        nextBtn = tk.Button(self.tl, text="看下一張", font=self.ftBtn, command=self.restart_window).grid(row=2, column=2)
-        self.tl.mainloop()
-=======
         if self.age == "11":
             output = "您選擇的圖片中辨識不到人臉"
         else:
@@ -131,7 +117,6 @@ class Interface:
             else:
                 nextBtn = tk.Button(self.tl, text="看下一張", font=self.ftBtn, command=self.cnt_next, state=tk.DISABLED).grid(row=2, column=2)
             self.tl.mainloop()
->>>>>>> 77147aebabdbd77ed1adf9893d6a9fd87e966699
 
     def close_window(self):
         self.tl.destroy()
