@@ -45,20 +45,53 @@ class Interface:
         root.title("人臉年齡偵測系統")
         ft = tkFont.Font(family='Helvetica', size=30, weight=tkFont.BOLD)
         self.ftBtn = tkFont.Font(family='Helvetica', size=15, weight=tkFont.BOLD)
-        label = tk.Label(self.root,text="歡迎使用年齡偵測系統",font=ft,bg='black',fg='SkyBlue1').pack(fill=tk.X)
+        label = tk.Label(self.root,text="歡迎使用年齡偵測系統",font=ft,bg='black',fg='SkyBlue1').grid(row=0, column=0, columnspan=2, sticky = tk.E+tk.W)
         im=Image.open("helloworld.jpg")
         self.img=ImageTk.PhotoImage(im)
-        imgLabel = tk.Label(self.root, image=self.img).pack()
-        inBtn = tk.Button(self.root, text="選擇檔案：",font=self.ftBtn, command=self.select_img).pack(fill=tk.X)
+        imgLabel = tk.Label(self.root, image=self.img).grid(row=1, column=0, columnspan=2)
+        inBtn = tk.Button(self.root, text="選擇檔案",font=self.ftBtn, command=self.select_one_img, bg='light grey').grid(row=2, column=0, sticky = tk.E+tk.W)
+        inBtn = tk.Button(self.root, text="選擇多個檔案",font=self.ftBtn, command=self.select_multi_img, bg='light grey').grid(row=2, column=1, sticky = tk.E+tk.W)
 
     def hideRoot(self):
         self.root.withdraw()
 
-    def select_img(self):
+    def next_photo(self, file_path):
+        self.rel_path = os.path.realpath(file_path)
+        im=Image.open(self.rel_path)
+        im = im.resize((224, 224), Image.ANTIALIAS)
+        img=ImageTk.PhotoImage(im)
+        imLabel=tk.Label(self.tl,image=img).grid(row=0, column=1)
+        self.hideRoot()
+        self.start_testing()
+        ftAge = tkFont.Font(family='Helvetica', size=15, weight=tkFont.BOLD)
+        if self.age == "11":
+            output = "您選擇的圖片中辨識不到人臉"
+        else:
+            output = "預測年齡:"+self.age+"歲"
+        ageLabel = tk.Label(self.tl, height=5, text=output, font=ftAge).grid(row=1,column=1)
+
+    def select_multi_img(self):
+        self.file_paths = filedialog.askopenfilenames(initialdir = "C:/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png")))
+        self.cnt = -1
+        self.cnt_next()
+
+    def cnt_next(self):
+        self.cnt += 1
+        is_multi = True
+        if self.cnt != 0:
+            self.tl.destroy()
+        if self.cnt+1 == len(self.file_paths):
+            is_multi = False
+        self.select_img(self.file_paths[self.cnt],is_multi)
+
+    def select_one_img(self):
+        file_path = filedialog.askopenfilename(initialdir = "C:/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png")))
+        self.select_img(file_path,False)
+
+    def select_img(self, file_path, is_multi):
         self.tl = tk.Toplevel()
         self.tl.geometry("+300+80")
         self.tl.withdraw()
-        file_path = filedialog.askopenfilename(initialdir = "C:/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png")))
         if not file_path:
             self.restart_window()
         else:
@@ -78,7 +111,11 @@ class Interface:
                 output = "預測年齡:"+self.age+"歲"
             ageLabel = tk.Label(self.tl, height=5, text=output, font=ftAge).grid(row=1,column=1)
             closeBtn = tk.Button(self.tl, text="結束程式", font=self.ftBtn, command=self.close_window).grid(row=2, column=0)
-            nextBtn = tk.Button(self.tl, text="看下一張", font=self.ftBtn, command=self.restart_window).grid(row=2, column=2)
+            newBtn = tk.Button(self.tl, text="看新圖片", font=self.ftBtn, command=self.restart_window).grid(row=2, column=1)
+            if is_multi:
+                nextBtn = tk.Button(self.tl, text="看下一張", font=self.ftBtn, command=self.cnt_next).grid(row=2, column=2)
+            else:
+                nextBtn = tk.Button(self.tl, text="看下一張", font=self.ftBtn, command=self.cnt_next, state=tk.DISABLED).grid(row=2, column=2)
             self.tl.mainloop()
 
     def close_window(self):
