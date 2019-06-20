@@ -61,7 +61,7 @@ class DataLoader():
 
             batch_label = []
             for label in labels:#4個
-                label_one_hot_encodes = self.one_hot_encode(label, num_classes=10)#改num_classes=10
+                label_one_hot_encodes = self.one_hot_encode(label, num_classes=11)#改num_classes=10
                 batch_label.append(label_one_hot_encodes)
             
             Xtr_label = np.array(batch_label)
@@ -80,12 +80,12 @@ class DataLoader():
         
         batch_label = []
         for label in self.test_labels[indices]:
-            label_one_hot_encodes = self.one_hot_encode(label, num_classes=10)#改num_classes=10
+            label_one_hot_encodes = self.one_hot_encode(label, num_classes=11)#改num_classes=10
             batch_label.append(label_one_hot_encodes)#修正縮排
         
         Xte_label = np.array(batch_label)
         
         return Xte, Xte_label
 
-    def one_hot_encode(self, y, num_classes=10):#改num_classes=10
+    def one_hot_encode(self, y, num_classes=11):#改num_classes=10
         return np.squeeze(np.eye(num_classes)[y.reshape(-1)]) #分成4個[0. 0. 0. 0. 0. 0. 0. 0. 0. 1.]這樣的形式 #np.eye(N) NxN對角矩陣
