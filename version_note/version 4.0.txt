@@ -1,0 +1,13 @@
+調整dataset筆數 更新training註解 class改為7
+---------------
+謝宗倫:
+
+training.py:
+	1.讀train.csv及val.csv 各500張圖上調至各1000張
+	2.更新build_CNN_Network註解
+	3.classe改為7
+dataloader.py:
+
+	1.調整測試1000張
+	2.class改為7
+	
