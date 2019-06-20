@@ -49,15 +49,13 @@
 \chapter{Introduction}
 
 \section{Purpose}
+透過訓練一個有許多人物大頭照圖片的資料集，來達成能夠有效分辨出輸入圖像的人物年齡
 \begin{description}
     \item 專案目標:
-    \begin{description}
-        \item 藉由UI介面選擇一張人物大頭照圖，經過系統判別該照片中人物年齡約是多少。
-    \end{description}
-    \item 系統介面:
     \begin{itemize}
-        \item 能讓使用者操作選擇圖片的UI介面
-        \item 接收圖片並分析人物年齡的後端程式
+        \item 藉由UI介面選擇一張人物大頭照圖，經過系統判別該照片中人物年齡約是多少。
+        \item 盡可能地增加圖片分析的準確度
+        \item 能夠辨別出使用者輸入的圖片是否有人臉
     \end{itemize}
 \end{description}
 
@@ -65,6 +63,13 @@
 此系統為人臉年齡辨識，本規格書提供專案開發人員做為參考，包括專案概述、功能說明、UI操作及環境架設。
 
 \section{Project Scope}
+    \begin{itemize}
+        \item 能讓使用者操作選擇圖片的UI介面
+        \item 能輸入圖片並分析年齡進行分類的training
+        \item 能分析輸入的圖片是否含有人臉
+        \item 建立UI介面的防呆機制
+        \item 可以用UI一次顯示多張圖片識別的結果
+    \end{itemize}
 此系統包含了能選擇圖片的UI介面以及後端處理分析人物年紀的程式，再傳回結果至UI顯示。
 
 
