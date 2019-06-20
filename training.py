@@ -73,7 +73,7 @@ class ConvolutionalNeuralNetworks():
         d5 = flatten(d4)
         d6 = dense(d5, f_size=120, dr=True, lastLayer=False)
         d7 = dense(d6, f_size=84, dr=True, lastLayer=False)
-        d8 = dense(d7, f_size=11, dr=False, lastLayer=True) #由於有10種class 所以改成10
+        d8 = dense(d7, f_size=7, dr=False, lastLayer=True) #由於有7種class 所以改成7
         return Model(d0, d8)
 
     def train(self, epochs, batch_size=1, sample_interval=50):
@@ -96,7 +96,7 @@ class ConvolutionalNeuralNetworks():
                 print(batch_i)
 
                 # If at save interval => do validation and save model
-                if (batch_i + 1) % sample_interval == 24:
+                if (batch_i + 1) % sample_interval == 49:
                     self.validation(epoch)
 
     def validation(self, epoch):
@@ -110,4 +110,4 @@ class ConvolutionalNeuralNetworks():
 if __name__ == '__main__':
     #     '''training model'''
     my_CNN_Model = ConvolutionalNeuralNetworks()
-    my_CNN_Model.train(epochs=20, batch_size=20, sample_interval=1266)
+    my_CNN_Model.train(epochs=10, batch_size=20, sample_interval=1266)
