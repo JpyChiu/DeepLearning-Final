@@ -22,14 +22,19 @@ import os
 
 class Predict_Age:
     def __init__(self, imgName):
-        my_CNN_Model = load_model('./model_38%.h5')#('./test07.h5')
+        my_CNN_Model = load_model('./test07.h5')#('./test07.h5')
         self.imgName = os.path.realpath(imgName)
         test_data = []
-        test_data.append(cv2.imread(self.imgName))
+        img = cv2.imread(self.imgName)
+        img = cv2.resize(img, (224,224), interpolation=cv2.INTER_CUBIC)
+        test_data.append(img)
         test_data = np.array(test_data) / 127.5 - 1.
         predict_label = my_CNN_Model.predict(test_data)
         aged_range = np.argmax(predict_label, axis=1)
-        self.predict_age = str(aged_range* 10 + 1)+"~"+str((aged_range + 1) * 10)
+        if aged_range==10:
+            self.predict_age = "11" #第11類 無人臉
+        else:
+            self.predict_age = str(aged_range* 10 + 1)+"~"+str((aged_range + 1) * 10)#1~10歲類推
 
     def get_age(self):
         return self.predict_age
@@ -53,21 +58,28 @@ class Interface:
         self.tl = tk.Toplevel()
         self.tl.geometry("+300+80")
         self.tl.withdraw()
-        file_path = filedialog.askopenfilename(initialdir = "C:/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
-        self.rel_path = os.path.realpath(file_path)
-        self.tl.update()
-        self.tl.deiconify()
-        im=Image.open(self.rel_path)
-        im = im.resize((224, 224), Image.ANTIALIAS)
-        img=ImageTk.PhotoImage(im)
-        imLabel=tk.Label(self.tl,image=img).grid(row=0, column=1)
-        self.hideRoot()
-        self.start_testing()
-        ftAge = tkFont.Font(family='Helvetica', size=15, weight=tkFont.BOLD)
-        ageLabel = tk.Label(self.tl, height=5, text=("預測年齡:"+self.age+"歲"), font=ftAge).grid(row=1,column=1)
-        closeBtn = tk.Button(self.tl, text="結束程式", font=self.ftBtn, command=self.close_window).grid(row=2, column=0)
-        nextBtn = tk.Button(self.tl, text="看下一張", font=self.ftBtn, command=self.restart_window).grid(row=2, column=2)
-        self.tl.mainloop()
+        file_path = filedialog.askopenfilename(initialdir = "C:/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png")))
+        if not file_path:
+            self.restart_window()
+        else:
+            self.rel_path = os.path.realpath(file_path)
+            self.tl.update()
+            self.tl.deiconify()
+            im=Image.open(self.rel_path)
+            im = im.resize((224, 224), Image.ANTIALIAS)
+            img=ImageTk.PhotoImage(im)
+            imLabel=tk.Label(self.tl,image=img).grid(row=0, column=1)
+            self.hideRoot()
+            self.start_testing()
+            ftAge = tkFont.Font(family='Helvetica', size=15, weight=tkFont.BOLD)
+            if self.age == "11":
+                output = "您選擇的圖片中辨識不到人臉"
+            else:
+                output = "預測年齡:"+self.age+"歲"
+            ageLabel = tk.Label(self.tl, height=5, text=output, font=ftAge).grid(row=1,column=1)
+            closeBtn = tk.Button(self.tl, text="結束程式", font=self.ftBtn, command=self.close_window).grid(row=2, column=0)
+            nextBtn = tk.Button(self.tl, text="看下一張", font=self.ftBtn, command=self.restart_window).grid(row=2, column=2)
+            self.tl.mainloop()
 
     def close_window(self):
         self.tl.destroy()
