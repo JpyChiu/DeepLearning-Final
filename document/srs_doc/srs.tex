@@ -100,12 +100,29 @@ UI前端會送出使用者所選擇圖片之路徑，傳至後端人臉辨識系
 \end{itemize}
 
 \section{Assumptions and Dependencies}
-可能會影響的要素：
-\begin{itemize}
-    \item 選擇的圖片不符合上述大小要求
-    \item 選擇的圖片不是人物大頭照
-    \item 選擇的圖片不是jpg檔案
-\end{itemize}
+\begin{tabular}{ |l|l| }
+    \hline
+    \multicolumn{2}{|c|}{額外的安裝包} \\
+    \hline
+    datetime & Paul Robinson \\
+    \hline
+    numpy & Lucas Radebe \\
+    \hline
+    sklearn.metrics.accuracy_score & 123 \\
+    \hline
+    keras & 123 \\
+    \hline
+    csv & 123 \\
+    \hline
+    cv2 & 123 \\
+    \hline
+    PIL.Image & 123 \\
+    \hline
+    PIL.ImageTk & 123 \\
+    \hline
+    tkinter & 123 \\
+    \hline
+\end{tabular}
 
 \chapter{External Interface Requirements}
 
@@ -144,24 +161,18 @@ UI前端會送出使用者所選擇圖片之路徑，傳至後端人臉辨識系
 \end{enumerate}
 
 \section{Hardware Interfaces}
-$<$Describe the logical and physical characteristics of each interface between 
-the software product and the hardware components of the system. This may include 
-the supported device types, the nature of the data and control interactions 
-between the software and the hardware, and communication protocols to be 
-used.$>$
+\begin{enumerate}
+    \item CPU: intel i5-6200U5
+    \item Memory: 8GB
+\end{enumerate}
 
 \section{Software Interfaces}
-$<$Describe the connections between this product and other specific software 
-components (name and version), including databases, operating systems, tools, 
-libraries, and integrated commercial components. Identify the data items or 
-messages coming into the system and going out and describe the purpose of each.  
-Describe the services needed and the nature of communications. Refer to 
-documents that describe detailed application programming interface protocols.  
-Identify data that will be shared across software components. If the data 
-sharing mechanism must be implemented in a specific way (for example, use of a 
-global data area in a multitasking operating system), specify this as an 
-implementation constraint.$>$
-
+\begin{enumerate}
+    \item Windows 10 64 bit
+    \item Python 3.6
+    \item TensorFlow Background
+    \item Keras API
+\end{enumerate} 
 
 \chapter{System Features}
 $<$This template illustrates organizing the functional requirements for the 
