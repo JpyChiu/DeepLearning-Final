@@ -10,7 +10,8 @@
 % modify this file as you see fit and even to delete this copyright
 % notice. 
 
-\documentclass{beamer}
+
+\documentclass[utf8x]{beamer}
 
 % There are many different themes available for Beamer. A comprehensive
 % list with examples is given here:
@@ -44,30 +45,24 @@
 %\usetheme{Singapore}
 %\usetheme{Szeged}
 %\usetheme{Warsaw}
+\usepackage{xeCJK} 
+\usepackage{fontspec}
+\usepackage{graphicx}
+\setCJKmainfont{標楷體} 
+\XeTeXlinebreaklocale "zh" 
+\XeTeXlinebreakskip = 0pt plus 1pt 
 
-\title{Presentation Title}
+
+\title{開放平台期末報告}
 
 % A subtitle is optional and this may be deleted
-\subtitle{Optional Subtitle}
-
-\author{F.~Joyee\inst{1} \and S.~abc\inst{2}}
+\subtitle{DeepLearning-Final}
+\author{開放平台概論，第七組}
 % - Give the names in the same order as the appear in the paper.
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
 
-\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
-{
-  \inst{1}%
-  Department of Computer Science hello\\
-  University of Somewhere
-  \and
-  \inst{2}%
-  Department of Theoretical Philosophy\\
-  University of Elsewhere}
-% - Use the \inst command only if there are several affiliations.
-% - Keep it simple, no one is interested in your street address.
-
-\date{Conference Name, 2013}
+\date{6月20號, 2019}
 % - Either use conference name or its abbreviation.
 % - Not really informative to the audience, more for people (including
 %   yourself) who are reading the slides online
@@ -99,129 +94,145 @@
   \titlepage
 \end{frame}
 
-\begin{frame}{Outline}
+\begin{frame}[shrink]{Outline}
   \tableofcontents
   % You might wish to add the option [pausesections]
 \end{frame}
 
 % Section and subsections will appear in the presentation overview
 % and table of contents.
-\section{First Main Section}
+\section{簡介}
 
-\subsection{First Subsection}
+\subsection{團隊簡介}
 
-\begin{frame}{First Slide Title}{Optional Subtitle}
+\begin{frame}{團隊簡介}{Introduction to this team }
   \begin{itemize}
   \item {
-    My first point.
+    1051416謝宗倫 - 程式與dataset修正、程式執行
   }
   \item {
-    My second point.
+    1051432林韶恩 - 撰寫UI介面、修改SRS文件
+  }
+ \item {
+    1051440洪博洲 - 主程式撰寫
+  }
+ \item {
+    1051509蘇仕宏 - dataset蒐集建立、撰寫ppt
+  }
+ \item {
+   1051413邱曜築 - 撰寫SRS文件
   }
   \end{itemize}
 \end{frame}
 
-\subsection{Second Subsection}
-
-% You can reveal the parts of a slide one at a time
-% with the \pause command:
-\begin{frame}{Second Slide Title}
+\subsection{要解決的問題簡介}
+\begin{frame}{要解決的問題簡介}{Introduction to the problem we're trying to solve}
   \begin{itemize}
   \item {
-    First item.
-    \pause % The slide will pause after showing the first item
-  }
-  \item {   
-    Second item.
-  }
-  % You can also specify when the content should appear
-  % by using <n->:
-  \item<3-> {
-    Third item.
-  }
-  \item<4-> {
-    Fourth item.
-  }
-  % or you can use the \uncover command to reveal general
-  % content (not just \items):
-  \item<5-> {
-    Fifth item. \uncover<6->{Extra text in the fifth item.}
+    在現代人的社會中，人與人之間的互動已經從面對面轉向通過科技互動，如何在短時間內判斷人的年齡也許在未來只能借助科技的幫助
+\begin{minipage}[c][0.4\textheight][c]{\linewidth}
+                \centering
+                \includegraphics[width=0.5\linewidth]{how.png}
+            \end{minipage}
   }
   \end{itemize}
 \end{frame}
 
-\section{Second Main Section}
+\section{方法論}
 
-\subsection{Another Subsection}
-
-\begin{frame}{Blocks}
-\begin{block}{Block Title}
-You can also highlight sections of your presentation in a block, with it's own title
-\end{block}
-\begin{theorem}
-There are separate environments for theorems, examples, definitions and proofs.
-\end{theorem}
-\begin{example}
-Here is an example of an example block.
-\end{example}
-\end{frame}
-
-% Placing a * after \section means it will not show in the
-% outline or table of contents.
-\section*{Summary}
-
-\begin{frame}{Summary}
+\subsection{模型輸入/輸出}
+\begin{frame}{模型輸入/輸出}{Input/Output}
   \begin{itemize}
-  \item
-    The \alert{first main message} of your talk in one or two lines.
-  \item
-    The \alert{second main message} of your talk in one or two lines.
-  \item
-    Perhaps a \alert{third message}, but not more than that.
-  \end{itemize}
-  
-  \begin{itemize}
-  \item
-    Outlook
-    \begin{itemize}
-    \item
-      Something you haven't solved.
-    \item
-      Something else you haven't solved.
-    \end{itemize}
+  \item {
+    1051416謝宗倫
+  }
   \end{itemize}
 \end{frame}
-
-
-
-% All of the following is optional and typically not needed. 
-\appendix
-\section<presentation>*{\appendixname}
-\subsection<presentation>*{For Further Reading}
-
-\begin{frame}[allowframebreaks]
-  \frametitle<presentation>{For Further Reading}
-    
-  \begin{thebibliography}{10}
-    
-  \beamertemplatebookbibitems
-  % Start with overview books.
-
-  \bibitem{Author1990}
-    A.~Author.
-    \newblock {\em Handbook of Everything}.
-    \newblock Some Press, 1990.
- 
-    
-  \beamertemplatearticlebibitems
-  % Followed by interesting articles. Keep the list short. 
-
-  \bibitem{Someone2000}
-    S.~Someone.
-    \newblock On this and that.
-    \newblock {\em Journal of This and That}, 2(1):50--100,
-    2000.
-  \end{thebibliography}
+\subsection{模型的每一層}
+\subsection{如何保存模型？}
+\subsection{模型的文件大小}
+\subsection{你的損失功能是什麼？為什麼？}
+\subsection{什麼是優化器和超參數設置？}
+\section{數據集}
+\subsection{數據集的大小}
+\begin{frame}{數據集的大小}{The size of  dataset}
+\begin{minipage}[c][0.4\textheight][c]{\linewidth}
+                \centering
+                \includegraphics[width=0.5\linewidth]{1561052804594.jpg}
+            \end{minipage}
+\end{frame}
+\subsection{如何收集/構建數據集?}
+\begin{frame}{如何收集/構建數據集?}{How you collect/build your dataset?}
+  \begin{itemize}
+  \item {
+    圖片來源：arge-scale CelebFaces Attributes (CelebA) Dataset
+  }
+  \item {
+    由香港中文大學湯曉鷗教授實驗室公佈的大型人臉識別資料集。包含有200K張人臉圖片，人臉屬性有40多種
+  }
+ \item {
+    從裡面20萬張的圖片挑選大約1000張左右的圖片使用，並且判斷年齡、自行撰寫CSV檔案
+  }
+ \item {
+    有將圖片大小都調整為224*224，並且有部分資料有做4方向的翻轉
+  }
+  \end{itemize}
+\end{frame}
+\subsection{數據集中有多少個配對的樣本?}
+\begin{frame}{數據集中有多少個配對的樣本}{How many paired samples in your dataset?}
+  \begin{itemize}
+  \item {
+    訓練：
+  }
+  \item {
+    驗證：
+  }
+ \item {
+    測試：
+  }
+  \end{itemize}
+\end{frame}
+\section{實驗評估}
+\subsection{實驗環境}
+\begin{frame}{實驗環境}{Experimental environment}
+ \begin{itemize}
+  \item {
+    CPU： I5-6200U5 ； I7 6700HQ
+  }
+\item {
+    Memory：8GB(DDR4X2)
+  }
+  \end{itemize}
+\end{frame}
+\subsection{您為訓練設置了多少個紀元?}
+\begin{frame}{您為訓練設置了多少個紀元}{How many epochs you set for training?}
+ \begin{itemize}
+  \item {
+    1000張的10代
+  }
+\item {
+    3000張的2代
+  }
+  \end{itemize}
+\end{frame}
+\subsection{評估}
+\begin{frame}{評估}{evaluation}
+ \begin{itemize}
+  \item {
+    定性 - 圖片預測對錯
+  }
+\item {
+    定量 - 準確率
+  }
+  \end{itemize}
+\end{frame}
+\subsection{現場演示}
+\begin{frame}{現場演示}{Live demo}
+  \begin{itemize}
+  \item {
+    現場演示
+  }
+  \end{itemize}
 \end{frame}
 
 \end{document}
