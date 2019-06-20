@@ -4,7 +4,6 @@
 \usepackage[bookmarks=true]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
-\usepackage{CJKutf8}
 \hypersetup{
     bookmarks=false,    % show bookmarks bar?
     pdftitle={Software Requirement Specification},    % title
@@ -24,21 +23,22 @@
 
 %}
 \usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{CJKutf8}
 \begin{document}
 \begin{CJK}{UTF8}{bkai}
-
 \begin{flushright}
     \rule{16cm}{5pt}\vskip1cm
     \begin{bfseries}
-        \Huge{FACE AGE RECOGNETION\\ SPECIFICATION}\\
+        \Huge{FACE AGE RECOGNITION\\ SPECIFICATION}\\
         \vspace{1.9cm}
         for\\
         \vspace{1.9cm}
-        Final Project\\
+        Final-Project\\
         \vspace{1.9cm}
         \LARGE{Version \myversion approved}\\
         \vspace{1.9cm}
-        Prepared by Group7\\
+        Prepared by Team7\\
         \vspace{1.9cm}
         \today\\
     \end{bfseries}
@@ -49,17 +49,17 @@
 \chapter{Introduction}
 
 \section{Purpose}
+\begin{description}
+    \item 專案目標:
     \begin{description}
-        \item 專案目標:
-        \begin{description}
-            \item 藉由UI介面選擇一張人物大頭照圖，經過系統判別該照片中人物年齡約是多少。
-        \end{description}
-        \item 系統介面:
-        \begin{itemize}
-            \item 能讓使用者操作選擇圖片的UI介面
-            \item 接收圖片並分析人物年齡的後端程式
-        \end{itemize}
+        \item 藉由UI介面選擇一張人物大頭照圖，經過系統判別該照片中人物年齡約是多少。
     \end{description}
+    \item 系統介面:
+    \begin{itemize}
+        \item 能讓使用者操作選擇圖片的UI介面
+        \item 接收圖片並分析人物年齡的後端程式
+    \end{itemize}
+\end{description}
 
 \section{Intended Audience and Reading Suggestions}
 此系統為人臉年齡辨識，本規格書提供專案開發人員做為參考，包括專案概述、功能說明、UI操作及環境架設。
@@ -107,18 +107,41 @@ UI前端會送出使用者所選擇圖片之路徑，傳至後端人臉辨識系
     \item 選擇的圖片不是jpg檔案
 \end{itemize}
 
-
 \chapter{External Interface Requirements}
 
 \section{User Interfaces}
-$<$Describe the logical characteristics of each interface between the software 
-product and the users. This may include sample screen images, any GUI standards 
-or product family style guides that are to be followed, screen layout 
-constraints, standard buttons and functions (e.g., help) that will appear on 
-every screen, keyboard shortcuts, error message display standards, and so on.  
-Define the software components for which a user interface is needed. Details of 
-the user interface design should be documented in a separate user interface 
-specification.$>$
+\vspace{0.9cm}
+\begin{enumerate}
+    \item 主介面如
+    \begin{figure}[htb]
+        \begin{center}
+            \includegraphics[scale=0.7]{image/UiHomePage.png}%
+        \end{center}
+        \caption{UI Home Page.}
+        \label{fig:1}
+    \end{figure}
+    Fig.\,\ref{fig:1} 所示，包含封面頁，以及可以選擇測試檔案的按鈕\\
+    \vspace{5.7cm}
+    \item 按下選擇檔案按鈕則開啟一個資料夾視窗，只可以選擇jpg檔案
+    \begin{figure}[htb]
+        \begin{center}
+            \includegraphics[scale=0.6]{image/UiSelectFile.png}%
+        \end{center}
+        \caption{UI Select File Window.}
+        \label{fig:2}
+    \end{figure}
+    ，如 Fig.\,\ref{fig:2} 所示\\
+    \vspace{6.5cm}
+    \item 選擇了圖片後按下開啟，等待系統回應幾秒鐘會回傳該圖片以及判斷的年齡區間，以及左下角有離開程式的按鈕，右下角則有能回主頁面再重新選擇一張圖片進行測試的按鈕
+    \begin{figure}[htb]
+        \begin{center}
+            \includegraphics[scale=0.8]{image/UiResponse.png}%
+        \end{center}
+        \caption{UI Response.}
+        \label{fig:3}
+    \end{figure}
+    ，如 Fig.\,\ref{fig:3} 所示\\
+\end{enumerate}
 
 \section{Hardware Interfaces}
 $<$Describe the logical and physical characteristics of each interface between 
@@ -147,18 +170,22 @@ prefer to organize this section by use case, mode of operation, user class,
 object class, functional hierarchy, or combinations of these, whatever makes the 
 most logical sense for your product.$>$
 
-\section{Description and Priority}
+\section{System Feature 1}
+$<$Don’t really say “System Feature 1.” State the feature name in just a few 
+words.$>$
+
+\subsection{Description and Priority}
 $<$Provide a short description of the feature and indicate whether it is of 
 High, Medium, or Low priority. You could also include specific priority 
 component ratings, such as benefit, penalty, cost, and risk (each rated on a 
 relative scale from a low of 1 to a high of 9).$>$
 
-\section{Stimulus/Response Sequences}
+\subsection{Stimulus/Response Sequences}
 $<$List the sequences of user actions and system responses that stimulate the 
 behavior defined for this feature. These will correspond to the dialog elements 
 associated with use cases.$>$
 
-\section{Functional Requirements}
+\subsection{Functional Requirements}
 $<$Itemize the detailed functional requirements associated with this feature.  
 These are the software capabilities that must be present in order for the user 
 to carry out the services provided by the feature, or to execute the use case.  
@@ -171,6 +198,8 @@ $<$Each requirement should be uniquely identified with a sequence number or a
 meaningful tag of some kind.$>$
 
 REQ-1:	REQ-2:
+
+\section{System Feature 2 (and so on)}
 
 
 \chapter{Other Nonfunctional Requirements}
@@ -197,6 +226,7 @@ of the product or protection of the data used or created by the product. Define
 any user identity authentication requirements. Refer to any external policies or 
 regulations containing security issues that affect the product. Define any 
 security or privacy certifications that must be satisfied.$>$
+
 
 \end{CJK}
 \end{document}

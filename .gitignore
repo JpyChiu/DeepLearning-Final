@@ -4,6 +4,9 @@
 *.gz
 *.out
 *.toc
+*.sty
+*.nav
+*.snm
 
 # Model
 *.h5
