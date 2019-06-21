@@ -9,7 +9,7 @@ from tkinter import filedialog
 
 class Predict_Age:
     def __init__(self, img_path):
-        my_CNN_Model = load_model('./test07.h5')#('./test07.h5')
+        my_CNN_Model = load_model('./M3000_40%.h5')#('./test07.h5')
         test_data = []
         img = cv2.imread(img_path)#從圖片路徑讀取圖片
         img = cv2.resize(img, (224,224), interpolation=cv2.INTER_CUBIC)#將圖片調整為224*224
@@ -20,7 +20,8 @@ class Predict_Age:
         #使用append 而不用=是因為要讓np array 的shape 維度 = 4
         predict_label = my_CNN_Model.predict(test_data)
         aged_range = np.argmax(predict_label, axis=1)
-        if aged_range==0:
+        print("aged_range:",aged_range)
+        if aged_range == 0:
             self.predict_age = "0" #第11類 無人臉
         else:
             self.predict_age = str(aged_range* 10 + 1 + 10)+"~"+str((aged_range + 1) * 10 + 10)#1~10歲類推
