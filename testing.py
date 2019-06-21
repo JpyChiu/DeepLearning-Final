@@ -20,10 +20,10 @@ class Predict_Age:
         #使用append 而不用=是因為要讓np array 的shape 維度 = 4
         predict_label = my_CNN_Model.predict(test_data)
         aged_range = np.argmax(predict_label, axis=1)
-        if aged_range==10:
-            self.predict_age = "11" #第11類 無人臉
+        if aged_range==0:
+            self.predict_age = "0" #第11類 無人臉
         else:
-            self.predict_age = str(aged_range* 10 + 1)+"~"+str((aged_range + 1) * 10)#1~10歲類推
+            self.predict_age = str(aged_range* 10 + 1 + 10)+"~"+str((aged_range + 1) * 10 + 10)#1~10歲類推
         #轉成np.array 得到左上到右下每一點的像素(R,G,B)   再把(R,G,B)分別除以127.5-1 得到三個小數
         #丟入model.predict 由於假設丟入一張圖片
         #所以predict_label 大概會是一維矩陣塞入一堆奇怪的數字:
@@ -67,7 +67,11 @@ class Interface:
             self.tl.destroy()
         if self.cnt+1 == len(self.file_paths):#讀到最後一個圖檔，is_multi = False
             is_multi = False
-        self.select_img(self.file_paths[self.cnt],is_multi)
+
+        if len(self.file_paths) == 0:
+            self.select_img(None,is_multi)
+        else:
+            self.select_img(self.file_paths[self.cnt],is_multi)
 
     def select_one_img(self):#選擇一張照片
         file_path = filedialog.askopenfilename(initialdir = "C:/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("png files","*.png")))
@@ -90,7 +94,7 @@ class Interface:
             self.hideRoot()#隱藏主畫面
             self.start_testing()#開始進行testing
             ftAge = tkFont.Font(family='Helvetica', size=15, weight=tkFont.BOLD)#年齡字型
-            if self.age == "11":
+            if self.age == "0":
                 output = "您選擇的圖片中辨識不到人臉"
             else:
                 output = "預測年齡:"+self.age+"歲"

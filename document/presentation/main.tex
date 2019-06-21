@@ -144,15 +144,85 @@
 \begin{frame}{模型輸入/輸出}{Input/Output}
   \begin{itemize}
   \item {
-    1051416謝宗倫
+    輸入為224*224的圖片
+  }
+ \item {
+    輸出為1個代表Class的一維向量0到6 (0代表非人，1代表1代表 21~30，2代表31~40......以此類推)
   }
   \end{itemize}
 \end{frame}
 \subsection{模型的每一層}
+\begin{frame}{模型的每一層}{Each layer of model}
+  \begin{itemize}
+  \item {
+    卷積層1： 圖像通過6個5*5的filter做卷積
+  }
+ \item {
+    池化層1： 圖像使用取2*2的filter將解析度降為1/4
+  }
+\item {
+    卷基層2： 圖像通過16個5*5的filter做卷積
+  }
+\item {
+    池化層2： 圖像使用取2*2的filter將解析度降為1/4
+  }
+\item {
+    平坦層： 將圖像展開平攤
+  }
+\item {
+    全連接層的隱藏層： 建128神經元，放棄一半的神經元
+  }
+\item {
+    全連接層的隱藏層2：建84神經元，放棄一半的神經元
+  }
+\item {
+    全連接層的輸出層： 建10神經元，輸出對應的數字
+  }
+  \end{itemize}
+\end{frame}
 \subsection{如何保存模型？}
-\subsection{模型的文件大小}
+\begin{frame}{如何保存模型？}{How you save model?}
+  \begin{itemize}
+  \item {
+    使用network中的save函數儲存model成h5檔
+  }
+    \begin{minipage}[c][0.4\textheight][c]{\linewidth}
+                \centering
+                \includegraphics[width=1.0\linewidth]{save.png}
+            \end{minipage}
+  \end{itemize}
+\end{frame}
+\subsection{模型的大小}
+\begin{frame}{模型的大小}{size of model}
+  \begin{itemize}
+  \item {
+    61.9MB
+  }
+    \begin{minipage}[c][0.4\textheight][c]{\linewidth}
+                \centering
+                \includegraphics[width=1.0\linewidth]{1561060727717.jpg}
+            \end{minipage}
+  \end{itemize}
+\end{frame}
 \subsection{你的損失功能是什麼？為什麼？}
-\subsection{什麼是優化器和超參數設置？}
+\begin{frame}{你的損失功能是什麼？為什麼？}{What's your loss functions, and why? }
+  \begin{itemize}
+  \item {
+     categorical crossentropy
+  }
+\item {
+因為目標值為分類格式，我們有7個class，每筆都將會是7維向量，每個class只有表示該類的index為1，其餘為0
+  }
+  \end{itemize}
+\end{frame}
+\subsection{優化器和超參數設置}
+\begin{frame}{優化器和超參數設置}{What's your optimizer and the setting of hyperparameter?}
+  \begin{itemize}
+  \item {
+      Adam optimizer,lr=0.001(學習率)
+  }
+  \end{itemize}
+\end{frame}
 \section{數據集}
 \subsection{數據集的大小}
 \begin{frame}{數據集的大小}{The size of  dataset}
