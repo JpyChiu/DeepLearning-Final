@@ -27,7 +27,7 @@ class ConvolutionalNeuralNetworks():
         self.data_loader =DataLoader(train_dataset=self.train_dataset_name,val_dataset=self.val_dataset_name,img_res=(self.img_rows, self.img_cols))
         
         # Build the network
-        optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999)#上一版lr=0.002 (學習率)
+        optimizer = Adam(lr=0.002, beta_1=0.9, beta_2=0.999)#上一版lr=0.002 (學習率)
         self.CNN_Network = self.build_CNN_Network()
         self.CNN_Network.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
         #categorical_crossentropy 用於目標值為分類時
@@ -96,7 +96,7 @@ class ConvolutionalNeuralNetworks():
                 print(batch_i)
 
                 # If at save interval => do validation and save model
-                if (batch_i + 1) % sample_interval == 149:
+                if (batch_i + 1) % sample_interval == 49:
                     self.validation(epoch)
 
     def validation(self, epoch):
@@ -110,4 +110,4 @@ class ConvolutionalNeuralNetworks():
 if __name__ == '__main__':
     #     '''training model'''
     my_CNN_Model = ConvolutionalNeuralNetworks()
-    my_CNN_Model.train(epochs=2, batch_size=20, sample_interval=1266)
+    my_CNN_Model.train(epochs=10, batch_size=20, sample_interval=1266)
