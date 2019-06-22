@@ -2,7 +2,6 @@ import numpy as np
 import scipy.misc
 import csv
 import cv2
-from PIL import Image
 # from glob import glob
 
 class DataLoader():
@@ -60,8 +59,8 @@ class DataLoader():
             labels = self.train_labels[i * batch_size:(i + 1) * batch_size]#與batch 相同 一次取batch_size數的項
 
             batch_label = []
-            for label in labels:#4個
-                label_one_hot_encodes = self.one_hot_encode(label, num_classes=7)#改num_classes=10
+            for label in labels:# 20個
+                label_one_hot_encodes = self.one_hot_encode(label, num_classes=7)#改num_classes=7
                 batch_label.append(label_one_hot_encodes)
             
             Xtr_label = np.array(batch_label)

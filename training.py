@@ -22,8 +22,8 @@ class ConvolutionalNeuralNetworks():
         self.img_shape = (self.img_rows, self.img_cols, self.channels)
 
         # Configure data loader
-        self.train_dataset_name = './dataset/bbox_train.csv' #已改 使用0~500張的train.jpg
-        self.val_dataset_name = './dataset/bbox_val.csv' #已改 使用501~1000張的train.jpg
+        self.train_dataset_name = './dataset/bbox_train.csv' #已改 使用0~1000張的train.jpg
+        self.val_dataset_name = './dataset/bbox_val.csv' #已改 使用1001~2000張的train.jpg
         self.data_loader =DataLoader(train_dataset=self.train_dataset_name,val_dataset=self.val_dataset_name,img_res=(self.img_rows, self.img_cols))
         
         # Build the network
@@ -102,7 +102,7 @@ class ConvolutionalNeuralNetworks():
     def validation(self, epoch):
         Xte, Xte_labels = self.data_loader.load_data(batch_size=20)
 
-        pred_labels = self.CNN_Network.predict(Xte)
+        pred_labels = self.CNN_Network.predict(Xte)#模型輸出
         print("Validation acc: " + str(
             int(accuracy_score(np.argmax(Xte_labels, axis=1), np.argmax(pred_labels, axis=1)) * 100)) + "%")
         self.CNN_Network.save('./test07.h5')#修正 改成存model
